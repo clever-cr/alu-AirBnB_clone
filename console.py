@@ -106,6 +106,10 @@ class HBNBCommand(cmd.Cmd):
                 setattr(item, arr[2], arr[3])
                 storage.save()
 
+    def help_update(self):
+        print("update command to \
+        update the a single object property")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
