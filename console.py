@@ -3,6 +3,7 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models import classes
 
 
 class HBNBCommand(cmd.Cmd):
@@ -27,6 +28,26 @@ class HBNBCommand(cmd.Cmd):
             model = BaseModel()
             storage.save()
             print(model.id)
+
+    def help_create(self):
+        print("Create command to create a new object")
+
+    def do_show(self, arg):
+        if not arg:
+            print("** class name missing **")
+        else:
+            arr = arg.split(" ")
+            if arr[0] not in classes.keys():
+                print("** class doesn't exist **")
+            elif len(arr) < 2:
+                print("** instance id missing **")
+            else:
+                all_items = storage.all()
+                item = all_items.get("{}.{}".format(arr[0], arr[1]))
+                if not item:
+                    print("** no instance found **")
+                else:
+                    print(item)
 
 
 if __name__ == '__main__':
