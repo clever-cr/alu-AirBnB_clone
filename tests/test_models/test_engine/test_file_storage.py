@@ -10,6 +10,15 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(storage, FileStorage)
         self.assertEqual(hasattr(FileStorage, "_FileStorage__file_path"), True)
         self.assertEqual(hasattr(FileStorage, "_FileStorage__objects"), True)
+    
+    def test_save(self):
+        storage.reload()
+        value_before = len(storage.all().keys())
+        storage.new(BaseModel())
+        storage.save()
+        storage.reload()
+        value_after = len(storage.all().keys())
+        self.assertGreater(value_after, value_before)
 
     def test_all(self):
         self.assertIsInstance(storage.all(), dict)
