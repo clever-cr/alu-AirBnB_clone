@@ -22,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        
+
         if not arg:
             print("** class name missing **")
         elif arg not in classes:
@@ -52,6 +52,24 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                 else:
                     print(item)
+
+    def do_destroy(self, arg):
+        if not arg:
+            print("** class name missing **")
+        else:
+            arr = arg.split(" ")
+            if arr[0] not in classes.keys():
+                print("** class doesn't exist **")
+            elif len(arr) < 2:
+                print("** instance id missing **")
+            else:
+                all_items = storage.all()
+                item = all_items.get("{}.{}".format(arr[0], arr[1]))
+                if not item:
+                    print("** no instance found **")
+                else:
+                    del all_items["{}.{}".format(arr[0], arr[1])]
+                    storage.save()
 
 
 if __name__ == '__main__':
