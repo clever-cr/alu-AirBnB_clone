@@ -29,8 +29,9 @@ class TestBase(unittest.TestCase):
         self.assertIn(key, storage.all().keys())
 
     def test_reload(self):
-        storage.reload()
-        self.assertIsInstance(storage.all(), dict)
+        store = FileStorage()
+        store.reload()
+        self.assertIsInstance(store.all(), dict)
 
 
 if __name__ == "__main__":
