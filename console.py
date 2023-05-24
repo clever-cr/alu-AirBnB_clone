@@ -28,6 +28,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             model = BaseModel()
+            storage.new(model)
             storage.save()
             print(model.id)
 
