@@ -10,7 +10,7 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(storage, FileStorage)
         self.assertEqual(hasattr(FileStorage, "_FileStorage__file_path"), True)
         self.assertEqual(hasattr(FileStorage, "_FileStorage__objects"), True)
-    
+
     def test_save(self):
         storage.new(BaseModel())
         self.assertIsInstance(storage.save(), dict)
