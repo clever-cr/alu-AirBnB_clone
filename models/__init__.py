@@ -12,6 +12,4 @@ from models.base_model import BaseModel
 storage = FileStorage()
 storage.reload()
 
-# classes = {"BaseModel": BaseModel, "User": User,  "State": State,
-#            "City": City, "Amenity": Amenity, "Place": Place,
-#            "Review": Review}
+classes = {"BaseModel": BaseModel}
