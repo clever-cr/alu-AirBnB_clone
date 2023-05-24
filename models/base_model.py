@@ -5,7 +5,7 @@ import models
 
 
 class BaseModel:
-     """Base class for other classes with common attributes/methods."""
+    """Base class for other classes with common attributes/methods."""
 
     def __init__(self, *args, **kwargs):
         """
@@ -30,7 +30,7 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-         """
+        """
         Return a dictionary representation of the instance.
 
         Returns:
@@ -45,5 +45,6 @@ class BaseModel:
         return obj_dict
 
     def __str__(self):
-         """Return a string representation of the instance."""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        """Return a string representation of the instance."""
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
