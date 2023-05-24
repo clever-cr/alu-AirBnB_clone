@@ -20,7 +20,8 @@ class TestBase(unittest.TestCase):
         self.assertIn(key, storage.all().keys())
 
     def test_reload(self):
-        self.assertIsInstance(storage.reload(), dict)
+        storage.reload()
+        self.assertIsInstance(storage.all(), dict)
 
 
 if __name__ == "__main__":
