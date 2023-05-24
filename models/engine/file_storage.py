@@ -42,5 +42,6 @@ class FileStorage:
                     obj_class = globals()[class_name]
                     obj = obj_class(**obj_data)
                     self.__objects[key] = obj
+                return obj_dict
         except FileNotFoundError:
             pass

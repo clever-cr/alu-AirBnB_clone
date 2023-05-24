@@ -12,7 +12,6 @@ class TestBase(unittest.TestCase):
         self.assertEqual(hasattr(FileStorage, "_FileStorage__objects"), True)
     
     def test_save(self):
-        storage.reload()
         value_before = len(storage.all().keys())
         storage.new(BaseModel())
         storage.save()
@@ -31,7 +30,7 @@ class TestBase(unittest.TestCase):
     def test_reload(self):
         store = FileStorage()
         store.reload()
-        self.assertIsInstance(store.all(), dict)
+        self.assertIsInstance(store.reload(), dict)
 
 
 if __name__ == "__main__":
