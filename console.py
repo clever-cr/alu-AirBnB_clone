@@ -71,6 +71,20 @@ class HBNBCommand(cmd.Cmd):
                     del all_items["{}.{}".format(arr[0], arr[1])]
                     storage.save()
 
+    def do_all(self, arg):
+        if not arg:
+            items = storage.all()
+            arr = [str(items[i]) for i in items.keys()]
+            print(arr)
+        else:
+            if arg not in classes.keys():
+                print("** class doesn't exist **")
+            else:
+                items = storage.all()
+                arr = [str(items[i]) for i in items.keys()
+                       if items[i].__class__.__name__ == arg]
+                print(arr)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
