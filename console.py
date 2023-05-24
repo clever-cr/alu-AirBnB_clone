@@ -22,9 +22,10 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
+        
         if not arg:
             print("** class name missing **")
-        elif arg is not classes:
+        elif arg not in classes:
             print("** class doesn't exist **")
         else:
             model = BaseModel()
